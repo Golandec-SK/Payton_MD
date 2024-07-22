@@ -1,19 +1,13 @@
-import cv2
+import random
 
-string = " `.,-':<>;+!*/?%&98#"
-coef = 255 / (len(string) - 1)
-image = cv2.imread('img/img_18.png')
-height, width, channels = image.shape
-gray_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-# gray_image = cv2.resize(gray_image, (30, 12))
-with open("output\ASCII_Art.txt", "w") as file:
-    for x in range(0, width - 1, 8):
-        s = ""
-        for y in range(0, height - 1, 4):
-            try:
-                s += string[len(string) - int(gray_image[x, y] / coef) - 1]
-                continue
-            except IndexError:
-                pass
-        if len(s) != 0:
-            file.write(s + "\n")
+word = "индекс"
+print("\nВ переменной word храниться слово:", word, "\n")
+
+high = len(word)
+low = len(word)
+
+for i in range(10):
+    position = random.randrange(low, high)
+    print("word[", position, "]\t", word[position])
+
+input("\n\nНажмите Enter, чтобы выйти.")
